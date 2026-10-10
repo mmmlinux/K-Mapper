@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>K Mapper</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>K Mapper</h1>
+    <p class="sub">Karnaugh map simplifier for 2–6 variables</p>
+  </header>
+
+  <main>
+    <section class="panel controls">
+      <div class="row">
+        <span class="pair">
+          <span class="label">Variables</span>
+          <span class="seg" id="nSeg">
+            <button data-n="2">2</button>
+            <button data-n="3">3</button>
+            <button data-n="4">4</button>
+            <button data-n="5">5</button>
+            <button data-n="6">6</button>
+          </span>
+        </span>
+        <span class="pair">
+          <span class="label">Form</span>
+          <span class="seg" id="modeSeg">
+            <button data-mode="sop" title="Sum of products: group the 1s">SOP</button>
+            <button data-mode="pos" title="Product of sums: group the 0s">POS</button>
+          </span>
+        </span>
+        <span class="pair">
+          <label class="label" for="names">Names</label>
+          <input id="names" class="names" maxlength="6" spellcheck="false" autocomplete="off">
+        </span>
+      </div>
+      <div class="row">
+        <span class="pair grow">
+          <label class="label" for="mInput">Σm</label>
+          <input id="mInput" class="list" placeholder="e.g. 0, 2, 5-7" spellcheck="false" autocomplete="off">
+        </span>
+        <span class="pair grow">
+          <label class="label" for="dInput">d</label>
+          <input id="dInput" class="list" placeholder="don't cares" spellcheck="false" autocomplete="off">
+        </span>
+      </div>
+      <div class="row">
+        <button id="clearBtn">Clear</button>
+        <button id="randomBtn">Random</button>
+        <span id="err" class="err" role="alert"></span>
+      </div>
+    </section>
+
+    <div class="layout">
+      <section class="panel">
+        <p class="hint">Click a cell to cycle <b>0</b> → <b>1</b> → <b>X</b> (don't care).</p>
+        <div class="kmap-wrap"><div id="kmap" class="maps"></div></div>
+
+        <div class="result">
+          <div class="expr-row">
+            <span class="fname">F =</span>
+            <span id="expr" class="expr"></span>
+          </div>
+          <div class="plain-row">
+            <code id="plain"></code>
+            <button id="copyBtn" class="small">Copy</button>
+          </div>
+          <p id="approx" class="approx" hidden>This map is too tangled to search fully, so this answer is correct but may not be the shortest possible.</p>
+          <ul id="groups" class="groups"></ul>
+        </div>
+      </section>
+
+      <section class="panel tt-panel">
+        <h2>Truth table</h2>
+        <table id="tt" class="tt"></table>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <a href="https://github.com/mmmlinux/K-Mapper" target="_blank" rel="noopener">GitHub</a>
+    <span class="dot">·</span>
+    <span id="version"></span>
+  </footer>
+
+  <script src="version.js"></script>
+  <script src="kmap.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
