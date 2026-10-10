@@ -1,5 +1,9 @@
 # Release notes
 
+## 1.1.1 — 2026-10-10
+
+- No changes to the app itself. The README no longer includes GitHub Pages setup steps.
+
 ## 1.0.11 — 2026-10-10
 
 - A GitHub link at the bottom of the page, next to the version number, goes to the project's source code.
